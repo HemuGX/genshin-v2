@@ -1,0 +1,165 @@
+<%- include("partials/header") -%>
+
+
+<div class="admin-wrapper">
+    <div class="container">
+        <div class="admin-content">
+            <div class="row">
+                <div class="col-6 col-md-6 col-sm-12">
+                    <div class="admin-pfp">
+                        <img src="https://pbs.twimg.com/media/E2R3tvwVkAA9GVW?format=jpg&name=large" alt="">
+                        <h2>Welcome Boss</h2>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-sm-12">
+
+                    <div class="admin-description">
+                        <h1>Add items to your website database boss</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Add a new character -->
+
+
+        <div class="admin-content">
+            <div class="character-confirm" id="character-confirm">
+                <h1>Item was saved successfully!</h1>
+                <a class="submit-button" href="/admin">Add More?</a>
+            </div>
+            <div class="add-character-wrapper" id="add-character-wrapper">
+                <h1>Add a new character</h1>
+                <form action="/add-character" method="post">
+                    <div class="row">
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <label for="new_character_name">Name of Character?</label>
+                            <input type="text" name="new_character_name">
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <p>Character Vision?</p>
+                            <div id="new-character-vision-wrapper" class="new-character-vision-wrapper">
+                                <div class="selectdiv">
+                                    <label>
+                                        <select name="new_character_vision">
+                                            <option selected> Select a vision? </option>
+                                            <option class="vision" value="Pyro">Pyro</option>
+                                            <option class="vision" value="Cryo">Cryo</option>
+                                            <option class="vision" value="Anemo">Anemo</option>
+                                            <option class="vision" value="Dendro">Dendro</option>
+                                            <option class="vision" value="Electro">Electro</option>
+                                            <option class="vision" value="Hydro">Hydro</option>
+                                            <option class="vision" value="Geo">Geo</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <p>Talent Book?</p>
+                            <div id="new-character-talent-book-wrapper" class="new-character-talent-book-wrapper">
+                                <div class="selectdiv">
+                                    <label>
+                                        <select name="new_character_talent_book">
+                                            <option selected> Select a Book? </option>
+                                            <%books.forEach((book)=> {%>
+                                            <option value="<%=book%>"><%=book.name%></option>
+                                            <% }) %>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <label for="new_character_image">Character Image?</label>
+                            <input type="text" name="new_character_image">
+                        </div>
+                        <div class="col-12 col-md-12 col-sm-12">
+                            <button onclick="newCharacterSubmit()" class="submit-button" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+         <!--End add a new character -->
+
+         
+
+         <!-- Add a new talent book -->
+
+
+        <div class="admin-content">
+            <div class="talent-book-confirm" id="talent-book-confirm">
+                <h1>Item was saved successfully!</h1>
+                <a class="submit-button" href="/admin">Add More?</a>
+            </div>
+            <div class="add-talent-book-wrapper" id="add-talent-book-wrapper">
+                <h1>Add new Talent Up Books type</h1>
+                <form action="/add-talent-book" method="post">
+                    <div class="row">
+                        <div class="col-6 col-md-6 col-sm-12">
+                            <label for="new_talent_book_name">Name of Book?</label>
+                            <input type="text" name="new_talent_book_name" id="">
+                        </div>
+                        <div class="col-6 col-md-6 col-sm-12">
+                            <label for="new_talent_book_image">Image Link?</label>
+                            <input type="text" name="new_talent_book_image" id="">
+                        </div>
+                        <div class="col-12 col-md-12 col-sm-12 days-active-wrapper">
+                            <p>Days that this book is gonna be active?</p>
+                            <% days.forEach((day) => {%>
+                                <div class="days-active-content">
+                                    <input id="<%=day.day%>" type="checkbox" name="days_active" value="<%=day.day%>">
+                                    <label for="<%=day.day%>"><%=day.day%></label>
+                                </div>
+                            
+                            <%  }) %>
+                        </div>
+                        <div class="col-12 col-md-12 col-sm-12 new-talent-book-characters-wrapper">
+                            <p>Characters under this book?</p>
+
+
+
+                                    <% characters.forEach((character) => {%>
+                                             
+                                        <div class="new-talent-book-character">
+
+                                            <input class="newTalBookInput" type="checkbox" name="characters" id="<%=character.name%>" value="<%=character.name%>">
+                                             <label class="newTalBookLabel" for="<%=character.name%>"><img src="<%=character.image%>" alt="" srcset=""></label>
+                                              
+                                            
+                                                </div> 
+                                              <%  }) %> 
+                           
+                            
+                        </div>
+                        <div class="col-12 col-md-12 col-sm-12">
+                            <button onclick="newBookSubmit()" class="submit-button" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function newBookSubmit() {
+        document.getElementById("add-talent-book-wrapper").style.display = "none"
+        document.getElementById("talent-book-confirm").style.display = "block"
+        console.log("Done")
+
+    }
+
+    function newCharacterSubmit() {
+        document.getElementById("add-character-wrapper").style.display = "none"
+        document.getElementById("character-confirm").style.display = "block"
+        console.log("Done")
+
+    }
+
+  
+</script>
+
+<%- include("partials/header") -%>

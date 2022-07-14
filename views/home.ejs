@@ -1,0 +1,111 @@
+<%- include("partials/header") -%>
+
+<div class="home-wrapper">
+    <div class="container">
+      <!-- Intro -->
+     <div class="intro">
+      <div class="row">
+        <div class="col-6 col-md-6 col-sm-12 intro-image-wrapper">
+          <div class="intro-image">
+            <img src="https://bbs.hoyolab.com/hoyowiki/picture/character/%E9%9B%B7%E7%94%B5%E5%B0%86%E5%86%9B/avatar.png" alt="">
+          </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-12 intro-texts-wrapper">
+            <div class="intro-texts">
+            <h1>GenshinWiki</h1>
+            <p>Your best comapnion for your Genshin Impact Account</p>
+            <div class="intro-links">
+              <a class="link" href="#">Primogems</a>
+              <a class="link" href="#">Resin</a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+     </div>
+      <!-- Intro Ends-->
+
+      <!-- Feature -->
+
+      <div class="feature-wrapper">
+        <div class="row">
+          <div class="col-3 col-md-4 col-sm-12">
+            <div class="feature">
+              <h2>Welcome to GenshinWiki</h2>
+                <p>Your best Genshin Impact companion! Paimon.moe helps you plan what to farm with an ascension calculator, and it also tracks your progress with a todo list and a wish counter.</p>
+            </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-12">
+            <div class="feature">
+              <h2>Events!</h2>
+                <p>Know everything about latest events by clicking here.</p>
+                <div class="feature-link-wrapper">
+                  <a href="#" class="feature-link"><i class='bx bx-calendar-event'></i> Events</a>
+                </div>
+
+            </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-12">
+            <div class="feature">
+                <p> Calculate character and weapon ascension materials and talent books! All calculations can be added to the Todo list, and it will show you how much resin you need too!</p>
+                <div class="feature-link-wrapper">
+                  <a href="/resin" class="feature-link"><i class='bx bx-calculator' ></i> Calculate Resin</a>
+                </div>
+              </div>
+          </div>
+          <div class="col-3 col-md-4 col-sm-12">
+            <div class="feature">
+              <p> Calculate how many primogems you need to pull your nexr 5 star character!</p>
+              <div class="feature-link-wrapper">
+                <a href="/resin" class="feature-link"><i class='bx bx-calculator' ></i> Calculate Resin</a>
+              </div>
+            </div>
+            </div>
+            
+            <div class="col-4 col-md-8 col-sm-12">
+              <div class="feature">
+                <h2> Farmable Today</h2>
+                <table id="farmable-materials">
+                  <% talentBooks.forEach((talentBook) => { %>
+                    <tr>
+                      <td class="farmabale-talent-book-image"><img class="" src="<%=talentBook.talent_book_image%>" alt="" srcset=""/></td>
+                      <td class="farmabale-talent-book-char-images">
+                        <% for(let i = 0;i<talentBook.characters.length; i++){ %>
+                          <img class="farmabale-talent-book-char-image" src="<%=talentBook.characters[i].image%>" alt="">
+                          <%}%>
+                      </td>
+                    </tr>
+
+                    <%  }) %>
+                  </table>
+                
+                <div class="feature-link-wrapper">
+                  <a href="/resin" class="feature-link"><i class='bx bx-calculator' ></i> Calculate Resin</a>
+                </div>
+              </div>
+              </div>
+              <div class="col-4 col-md-12 col-sm-12">
+                <div class="feature-image">
+                  <div class="banner-wrapper">
+                    <h2>Current Banner(s)</h2>
+                    <img src="https://pbs.twimg.com/media/FXg_am-UcAAhCtu?format=jpg&name=small" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 col-md-12 col-sm-12">
+                <div class="feature-image">
+                  <div class="banner-wrapper">
+                    <h2>Next Banner(s)</h2>
+                    <img src="https://pbs.twimg.com/media/E8MR4uqWEAYMccp?format=jpg&name=medium" alt="">
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Ends-->
+    </div>
+</div>
+
+<%- include("partials/footer") -%>
